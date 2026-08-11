@@ -1253,3 +1253,353 @@ button:active, .btn:active, [role="button"]:active,
         scroll-behavior: auto !important;
     }
 }
+
+
+
+/* ===== UVUZ NOTES — MOBILE RESPONSIVE FIX ===== */
+*,*::before,*::after{box-sizing:border-box}
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+img,video,svg,canvas{max-width:100%;height:auto}
+
+@media (max-width:768px){
+  body{min-width:0!important}
+  .container,.container-fluid,main,section{
+    width:100%!important;max-width:100%!important;min-width:0!important
+  }
+
+  .row,.grid,.cards,.notes-grid,.content-grid{
+    width:100%!important;max-width:100%!important;min-width:0!important
+  }
+
+  .row>* ,.grid>* ,.cards>* ,.notes-grid>* ,.content-grid>*{
+    min-width:0!important;max-width:100%
+  }
+
+  /* Notes cards become a clean single-column layout */
+  .note,.note-card,.notes-card,.note-item,
+  .notes-grid .card,.notes-container .card{
+    width:100%!important;max-width:100%!important;min-width:0!important;
+    margin-left:0!important;margin-right:0!important
+  }
+
+  .note p,.note-card p,.notes-card p,.note-item p,
+  .note-content,.description{
+    white-space:normal!important;
+    overflow-wrap:anywhere;
+    word-break:break-word
+  }
+
+  .note pre,.note code,.note-card pre,.note-card code{
+    max-width:100%;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere
+  }
+
+  .notes-header,.notes-toolbar,.notes-actions,
+  .note-header,.note-card-header{
+    width:100%;min-width:0;flex-wrap:wrap!important;gap:10px
+  }
+
+  .notes-header>*,.notes-toolbar>*,.notes-actions>*,
+  .note-header>*,.note-card-header>*{min-width:0;max-width:100%}
+
+  .notes-toolbar input,.notes-toolbar select,.notes-toolbar textarea,
+  .search input,.search-bar input{
+    width:100%;max-width:100%
+  }
+
+  .note img,.note-card img,.notes-card img,.note-item img{
+    display:block;width:100%;max-width:100%;height:auto;object-fit:contain
+  }
+
+  h1,h2,h3,.logo,.brand,.nav-title,.badge,.tag,.status,.chip,
+  button,.btn,.nav-link,.progress-label,.step-number{
+    overflow-wrap:anywhere
+  }
+
+  h1{font-size:clamp(1.05rem,5vw,1.5rem)}
+  h2{font-size:clamp(.95rem,4.3vw,1.25rem)}
+  h3{font-size:clamp(.8rem,3.8vw,1.05rem)}
+  button,.btn{min-height:42px;max-width:100%}
+}
+
+@media (max-width:480px){
+  main,section,.container,.container-fluid{
+    padding-left:12px!important;padding-right:12px!important
+  }
+
+  .note,.note-card,.notes-card,.note-item{
+    padding:12px!important;border-radius:12px
+  }
+
+  .note h1,.note h2,.note h3,
+  .note-card h1,.note-card h2,.note-card h3,
+  .notes-card h1,.notes-card h2,.notes-card h3{
+    line-height:1.65;letter-spacing:0
+  }
+}
+
+@media (max-width:360px){
+  main,section,.container,.container-fluid{
+    padding-left:8px!important;padding-right:8px!important
+  }
+  .note,.note-card,.notes-card,.note-item{padding:10px!important}
+  button,.btn{width:100%}
+}
+
+
+
+/* =========================================================
+   UVUZ NOTES — CATEGORY GRID
+   Desktop: 4 cards per row
+   Mobile: 2 cards per row
+   ========================================================= */
+
+@media (min-width: 769px) {
+    .notes-categories,
+    .categories,
+    .category-grid,
+    .notes-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .notes-categories > *,
+    .categories > *,
+    .category-grid > *,
+    .notes-grid > * {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .notes-categories,
+    .categories,
+    .category-grid,
+    .notes-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .notes-categories > *,
+    .categories > *,
+    .category-grid > *,
+    .notes-grid > * {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .notes-categories,
+    .categories,
+    .category-grid,
+    .notes-grid {
+        gap: 8px !important;
+    }
+}
+
+
+
+/* =========================================================
+   NOTES FOLDERS — REAL CATEGORY TILES
+   All Notes / Ideas / Programming / University / Personal
+   Desktop: 4 tiles per row
+   Mobile: 2 tiles per row
+   ========================================================= */
+
+.note-folders {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    align-content: start;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--line);
+    padding: 14px !important;
+    margin: 0 !important;
+}
+
+.note-folders .folder {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 86px;
+    margin: 0 !important;
+    padding: 12px 8px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 9px !important;
+
+    border: 1px solid rgba(255,255,255,.07) !important;
+    border-radius: 12px !important;
+    background: linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.012)) !important;
+
+    color: var(--muted) !important;
+    text-align: center !important;
+    font-family: "Press Start 2P", monospace !important;
+    font-size: 7px !important;
+    line-height: 1.65 !important;
+
+    transition:
+        transform .22s ease,
+        border-color .22s ease,
+        background .22s ease,
+        box-shadow .22s ease,
+        color .22s ease !important;
+}
+
+.note-folders .folder::first-letter {
+    font-size: 18px;
+}
+
+.note-folders .folder:hover {
+    transform: translateY(-3px) !important;
+    border-color: rgba(32,217,255,.32) !important;
+    background: linear-gradient(145deg, rgba(32,217,255,.08), rgba(139,92,246,.06)) !important;
+    color: #fff !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,.20), 0 0 18px rgba(32,217,255,.06) !important;
+}
+
+.note-folders .folder.active {
+    transform: translateY(-2px) !important;
+    border-color: rgba(139,92,246,.55) !important;
+    background: linear-gradient(145deg, rgba(139,92,246,.22), rgba(32,217,255,.07)) !important;
+    color: #fff !important;
+    box-shadow:
+        inset 0 0 0 1px rgba(139,92,246,.12),
+        0 8px 25px rgba(0,0,0,.22),
+        0 0 22px rgba(139,92,246,.10) !important;
+}
+
+@media (min-width: 761px) {
+    .note-folders {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 760px) {
+    .note-folders {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        padding: 12px !important;
+    }
+
+    .note-folders .folder {
+        min-height: 78px;
+        padding: 10px 6px !important;
+        font-size: 6px !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .note-folders {
+        gap: 8px !important;
+        padding: 9px !important;
+    }
+
+    .note-folders .folder {
+        min-height: 72px;
+        font-size: 5.5px !important;
+    }
+}
+
+
+
+/* =========================================================
+   CATEGORY LAYOUT FINAL OVERRIDE
+   Desktop = original compact folder row
+   Mobile = square category cards
+   ========================================================= */
+
+/* Desktop: restore the original compact folder navigation */
+@media (min-width: 761px) {
+    .note-folders {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 24px !important;
+        padding: 12px 0 !important;
+        margin: 0 !important;
+        border: 0 !important;
+        border-bottom: 1px solid var(--line) !important;
+        background: transparent !important;
+    }
+
+    .note-folders .folder {
+        width: auto !important;
+        min-width: 0 !important;
+        min-height: auto !important;
+        padding: 7px 2px !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 7px !important;
+
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+
+        font-family: "Press Start 2P", monospace !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        color: var(--muted) !important;
+        transform: none !important;
+    }
+
+    .note-folders .folder:hover,
+    .note-folders .folder.active {
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        transform: translateY(-1px) !important;
+    }
+
+    .note-folders .folder.active {
+        color: #fff !important;
+    }
+}
+
+/* Mobile: keep the new square-card design, but make labels easier to read */
+@media (max-width: 760px) {
+    .note-folders {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        padding: 12px !important;
+    }
+
+    .note-folders .folder {
+        min-height: 82px !important;
+        padding: 11px 7px !important;
+        font-size: 8px !important;
+        line-height: 1.7 !important;
+        letter-spacing: .01em !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .note-folders {
+        gap: 8px !important;
+        padding: 9px !important;
+    }
+
+    .note-folders .folder {
+        min-height: 76px !important;
+        padding: 10px 5px !important;
+        font-size: 7.2px !important;
+        line-height: 1.65 !important;
+    }
+}
