@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#03050b" />
+  <meta name="description" content="UVUZ — productivity planner with a game-inspired experience." />
+  <title>UVUZ — Productivity Planner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <div class="brand-mark">♠</div>
+        <div class="brand-info">
+          <strong>UVUZ</strong>
+          <div class="brand-level">
+            <span>LEVEL UP YOUR LIFE</span>
+            <div class="life-hud">
+              <div class="health-lives" id="healthLives" aria-label="5 lives">
+                <span class="game-heart full" data-life="1"></span>
+                <span class="game-heart full" data-life="2"></span>
+                <span class="game-heart full" data-life="3"></span>
+                <span class="game-heart full" data-life="4"></span>
+                <span class="game-heart full" data-life="5"></span>
+              </div>
+              <span class="life-counter" id="lifeCounter">5/5</span>
+            </div>
+          </div>
+        </div>
+        <button class="icon-btn mobile-close" id="closeSidebar" aria-label="Close menu">×</button>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="dashboard"><span>⌂</span> Dashboard</button>
+        <div class="nav-group">
+          <button class="nav-item nav-parent" id="goalsToggle"><span>◎</span> Goals <b>⌃</b></button>
+          <div class="subnav open" id="goalsSubnav">
+            <button data-view="yearly"><span>○</span> Yearly Goals</button>
+            <button data-view="monthly"><span>○</span> Monthly Goals</button>
+            <button data-view="weekly"><span>○</span> Weekly Goals</button>
+            <button data-view="daily"><span>○</span> Daily Tasks</button>
+          </div>
+        </div>
+        <button class="nav-item" data-view="notes"><span>✎</span> Notes</button>
+        <button class="nav-item" data-view="progress"><span>◒</span> Progress</button>
+        <button class="nav-item" data-view="calendar"><span>□</span> Calendar</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-view="settings"><span>⚙</span> Settings</button>
+        <div class="mini-status">
+          <div class="pixel-orb"></div>
+          <div><b id="sidebarProgress">0%</b><span>year progress</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="openSidebar" aria-label="Open menu">☰</button>
+        <div class="breadcrumb" id="breadcrumb">Dashboard</div>
+        <div class="top-actions">
+          <label class="search">
+            <span>⌕</span>
+            <input id="globalSearch" placeholder="Search goals, tasks, notes..." aria-label="Search" />
+          </label>
+          <button class="ghost-btn" id="quickVoice" aria-label="Quick voice" title="Quick voice">🎙 <span>Quick voice</span></button>
+          <button class="primary-btn" id="quickAdd">＋ Add</button>
+        </div>
+      </header>
+
+      <section class="content" id="content"></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal" id="modal"></div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
